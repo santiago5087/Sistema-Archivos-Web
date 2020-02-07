@@ -45,14 +45,14 @@
         echo "</b></pre>\n";
         echo "<hr /><pre>\n";
 
-        echo '<div class="row">';
         echo '<div class="container">';
+        echo '<div class="row">';
         echo '<div class="col s8 m8">';
         while(($fichero = readdir($dir)) !== FALSE) { //Recorre el contenido del directorio
             
             if (is_dir($nomdir . $fichero)) {   //Se concatena el string
                 if ($fichero == "." or $fichero =="..") {
-                    echo '<label> <span><a href="?nomdir=' . urldecode($nomdir . $fichero) .'">';
+                    echo '<label> <span><a href="?nomdir=' . urlencode($nomdir . $fichero) .'">';
                     echo $fichero;
                     echo '</a></span></label>';
                 }
@@ -72,16 +72,16 @@
             echo "<br />\n";
         }
         
-        echo '</div></div>';
+        echo '</div>';
         echo '<div class="col s4 m4" id="matriz">';
-        echo '</div></div>';
+        echo '</div></div></div>';
 
         closedir($dir);
-        /*
+        
         echo "</pre></hr />\n";
-        echo $salida = shell_exec("ls -l " . $nomdir . "/" );
+        $salida = shell_exec("ls -l " . $nomdir . "/" );
         echo "<pre>$salida</pre>";
-        */
+        
     ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

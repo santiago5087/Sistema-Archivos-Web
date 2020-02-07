@@ -2,9 +2,13 @@
 
 ## Sobre el Proyecto
 **Institución:** Universidad Nacional de Colombia - Sede Medellín
+
 **Materia:** Sistemas Operativos
+
 **Equipo:** Edhy Santiago Marín Arbeláez - Daniel Espinal Mosquera
+
 **Herramientas:** HTML, CSS, Javascript, PHP, Apache
+
 
 ## Instrucciones
 **1.** Instalar el paquete de software libre llamado XAMPP (inclulye PHP), solo se utilizará la herramienta del servidor web de código abierto Apache (para plataformas UNIX y Microsoft Windows), al instalar el paquete completo se facilita el proceso de instalación y configuración.

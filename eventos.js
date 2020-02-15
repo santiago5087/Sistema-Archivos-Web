@@ -11,7 +11,7 @@ menuArch.forEach(element => {
             <table>
                 <tbody>
                     <tr>
-                        <td> <a class="waves-effect waves-light btn-small">Crear archivo</a> </td>
+                        <td> <a class="waves-effect waves-light btn-small">Crear archivo perro</a> </td>
                         <td> <a class="waves-effect waves-light btn-small">Cambiar nombre</a> </td>
                     </tr>
                     <tr>
@@ -44,7 +44,6 @@ menuDir.forEach(element => {
             <table>
                 <tbody>
                     <tr>
-                        <td> <a class="waves-effect waves-light btn-small">Crear directorio</a> </td>
                         <td> <a class="waves-effect waves-light btn-small">Cambiar nombre</a> </td>
                     </tr>
                     <tr>
@@ -65,5 +64,17 @@ menuDir.forEach(element => {
         } else {
             $('#matriz').empty();
         }
+
+        /*
+        $(document).ready(function() {
+            var plantilla = "<h3>Hola perrito aparecí</h3>";
+            var contenedor = $("#c1");
+            var btnAddmore = $("#btnAddmore");
+            btnAddmore.click(function() {
+                contenedor.append(plantilla);
+            })
+        });
+        */
     })
 });
+

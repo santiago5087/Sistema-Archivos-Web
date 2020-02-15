@@ -1,0 +1,8 @@
+.segunda {
+    display: inline-flex;
+}
+
+.formulario {
+    align-items: flex-start;
+    padding-right: 50px;
+}

@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+
     <title>Lectura de archivos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  
+    <script src="script.js"></script>
 </head>
 <body>
     <?php
+        
         if (empty($_GET["nomdir"])) {
             $nomdir = "./system/";
         }
@@ -47,7 +57,7 @@
 
         echo '<div class="container">';
         echo '<div class="row">';
-        echo '<div class="col s8 m8">';
+        echo '<div class="col s6 m6">';
         while(($fichero = readdir($dir)) !== FALSE) { //Recorre el contenido del directorio
             
             if (is_dir($nomdir . $fichero)) {   //Se concatena el string
@@ -72,23 +82,41 @@
             echo "<br />\n";
         }
         
-        echo '</div>';
-        echo '<div class="col s4 m4" id="matriz">';
-        echo '</div></div></div>';
-
         closedir($dir);
-        
-        echo "</pre></hr />\n";
-        $salida = shell_exec("ls -l " . $nomdir . "/" );
-        echo "<pre>$salida</pre>";
-        
+        echo '</div>';
+        echo '<div class="col s4 m4">';
+        echo '<div class="row">';
+        echo '<div class="container" id="matriz">';    
+        echo '</div></div></div>';
+        echo '</div></div>';
+
+        ?>
+
+        <div class="row segunda">
+            <form method="POST" class="formulario">
+                <input type="text" class="validate" id="nombreArchivo" placeholder="Nombre">
+                <input type="button" class="btn waves-effect waves-light" value="Crear Archivo" onclick="crear_archivo('<?php echo $nomdir ?>');">
+            </form>
+
+            <form method="POST" class="formulario">
+                <input type="text" class="validate" id="nombreDirectorio" placeholder="Nombre">
+                <input type="button" class="btn waves-effect waves-light" value="Crear Directorio" onclick="crear_directorio('<?php echo $nomdir ?>');">
+            </form>
+        </div>
+
+        <div id="resultados"></div>       
+
+    <?php
+
+    echo "</pre></hr />\n";
+    chmod($nomdir . "perro.txt", 0777);
+    $prueba = chmod($nomdir . "prueba.txt", 0000);
+    echo "<pre>$prueba</pre>";
+    $salida = shell_exec("ls -l " . $nomdir . "/" );
+    echo "<pre>$salida</pre>";
+
     ?>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-  <script src="./eventos.js"></script>
+  <script src="eventos.js"></script>
 </body>
 </html>

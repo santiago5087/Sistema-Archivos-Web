@@ -9,7 +9,6 @@ function crear_archivo(ruta) {
         data: {nombre: nombre, direccion: ruta},
         success:function(datos) {
             window.alert("Archivo creado con exito! recargar la página.");
-            $("#resultados").html(datos);
         }
     })
 };
@@ -25,7 +24,6 @@ function crear_directorio(ruta) {
         data: {nombre: nombre, direccion: ruta},
         success:function(datos) {
             window.alert("Directorio creado con exito! recargar la página.");
-            $("#resultados").html(datos);
         }
     })
 };

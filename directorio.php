@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
-
+    
     <title>Lectura de archivos</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script
@@ -121,7 +121,7 @@
                 <input type="text" class="validate campo" id="rutaMover" placeholder="Ruta para pegar">
                 <input type="button" class="btn waves-effect waves-light" value="Pegar" onclick="mover('<?php echo $nomdir ?>');">
             </form>
-
+            
             <form method="POST" class="formulario">
                 <input type="text" class="validate campo" id="nombreViejo" placeholder="Nombre del elemento">
                 <input type="text" class="validate campo" id="nombreNuevo" placeholder="Nombre nuevo">
@@ -137,15 +137,48 @@
             </form>
         
             <form method="POST" class="formulario">
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>  </td>
+                            <td> Usuario </td>
+                            <td> Grupo </td>
+                            <td> Otros </td>
+                        </tr>
+                        <tr>
+                            <td>  Read </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c00" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c01" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c02" /></label> </td>
+                        </tr>
+                        <tr>
+                            <td> Write </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c10" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c11" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c12" /></label> </td>
+                        </tr>
+                        <tr>
+                            <td> Execute </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" /></label> </td>    
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <input type="text" class="validate campo" id="elementoProp" placeholder="Nombre elemento"> <input type="button" class="btn waves-effect waves-light" value="Cambiar Permisos" onclick="cambiar_permisos('<?php echo $nomdir ?>');">
+            </form>
+
+            <form method="POST" class="formulario">
                 <input type="text" class="validate campo" id="nombreEliminar" placeholder="Nombre">
                 <input type="button" class="btn waves-effect waves-light" value="Eliminar" onclick="eliminar('<?php echo $nomdir ?>');">
             </form>
-
-
         
         </div>
 
-
+        
 
         <div id="resultados"></div>       
 

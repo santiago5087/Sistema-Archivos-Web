@@ -122,3 +122,35 @@ function cambiar_propietario(ruta) {
         }
     })
 };
+
+function cambiar_permisos(ruta) {
+    var nombreElemento = document.getElementById("elementoProp").value;
+
+    var us = 0;
+
+    if ( $("#c00").attr('checked') ) {
+        us += 1;
+    }
+
+    if ( $("#c01").attr('checked') ) {
+        us += 1;
+    }
+
+    if ( $("#c02").attr('checked') ) {
+        us += 1;
+    }
+
+    window.alert(us);
+    var celda00 = document.getElementById("c01");
+    var celda00 = document.getElementById("c02");
+    var url = "comandos/cambiarPermisos";
+
+    $.ajax({
+        type:"post",
+        url: url,
+        data: {nombreE: nombreElemento, nombreP: nombrePropietario, direccion: ruta},
+        success:function(datos) {
+            window.alert("Se ha cambiado el propietario con éxito! recargar la página.")
+        }
+    })
+}

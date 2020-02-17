@@ -10,3 +10,10 @@
 .campo {
     width: 200px !important;
 }
+
+.checkFormulario {
+    opacity: unset !important;
+    pointer-events: all !important;
+    width: 20px;
+    height: 20px;
+}

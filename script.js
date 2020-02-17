@@ -55,7 +55,22 @@ function copiar_pegar(ruta) {
         url: url,
         data: {nombre: nombre, rutaPegar: rutaPegar, direccion: ruta},
         success:function(datos) {
-            Window.alert("Elemento pegado! recargar la página.")
+            window.alert("Elemento pegado! recargar la página.")
+        }
+    })
+};
+
+function eliminar(ruta) {
+    var nombre = document.getElementById("nombreEliminar").value;
+    //var direccion = document.getElementById("direccion").value;
+    var url = "comandos/eliminarElemento.php";
+
+    $.ajax({
+        type:"post",
+        url: url,
+        data: {nombre: nombre, direccion: ruta},
+        success:function(datos) {
+            window.alert("Elemento eliminado con exito! recargar la página.");
         }
     })
 };

@@ -6,3 +6,7 @@
     align-items: flex-start;
     padding-right: 50px;
 }
+
+.campo {
+    width: 200px !important;
+}

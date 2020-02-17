@@ -74,3 +74,51 @@ function eliminar(ruta) {
         }
     })
 };
+
+function mover(ruta) {
+    var nombre = document.getElementById("nombreCortar").value;
+    var rutaPegar = document.getElementById("rutaMover").value;
+    //var direccion = document.getElementById("direccion").value;
+    var url = "comandos/cortarMover.php";
+
+    $.ajax({
+        type:"post",
+        url: url,
+        data: {nombre: nombre, rutaPegar: rutaPegar, direccion: ruta},
+        success:function(datos) {
+            window.alert("Elemento movido! recargar la página.")
+        }
+    })
+};
+
+function cambiar_nombre(ruta) {
+    var nombreViejo = document.getElementById("nombreViejo").value;
+    var nombreNuevo = document.getElementById("nombreNuevo").value;
+    //var direccion = document.getElementById("direccion").value;
+    var url = "comandos/cambiarNombre.php";
+
+    $.ajax({
+        type:"post",
+        url: url,
+        data: {nombreV: nombreViejo, nombreN: nombreNuevo, direccion: ruta},
+        success:function(datos) {
+            window.alert("Se ha cambiado el nombre con éxito! recargar la página.")
+        }
+    })
+};
+
+function cambiar_propietario(ruta) {
+    var nombreElemento = document.getElementById("nombreElU").value;
+    var nombrePropietario = document.getElementById("nombreUser").value;
+    //var direccion = document.getElementById("direccion").value;
+    var url = "comandos/cambiarPropietario.php";
+
+    $.ajax({
+        type:"post",
+        url: url,
+        data: {nombreE: nombreElemento, nombreP: nombrePropietario, direccion: ruta},
+        success:function(datos) {
+            window.alert("Se ha cambiado el propietario con éxito! recargar la página.")
+        }
+    })
+};

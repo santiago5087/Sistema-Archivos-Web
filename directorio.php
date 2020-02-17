@@ -117,12 +117,33 @@
             </form>
 
             <form method="POST" class="formulario">
+                <input type="text" class="validate campo" id="nombreCortar" placeholder="Nombre elemento a cortar">
+                <input type="text" class="validate campo" id="rutaMover" placeholder="Ruta para pegar">
+                <input type="button" class="btn waves-effect waves-light" value="Pegar" onclick="mover('<?php echo $nomdir ?>');">
+            </form>
+
+            <form method="POST" class="formulario">
+                <input type="text" class="validate campo" id="nombreViejo" placeholder="Nombre del elemento">
+                <input type="text" class="validate campo" id="nombreNuevo" placeholder="Nombre nuevo">
+                <input type="button" class="btn waves-effect waves-light" value="Cambiar nombre" onclick="cambiar_nombre('<?php echo $nomdir ?>');">
+            </form>
+        </div>
+
+        <div class="row segunda">
+            <form method="POST" class="formulario">
+                <input type="text" class="validate campo" id="nombreElU" placeholder="Nombre del elemento">
+                <input type="text" class="validate campo" id="nombreUser" placeholder="Nombre Propietario">
+                <input type="button" class="btn waves-effect waves-light" value="Cambiar Propietario" onclick="cambiar_propietario('<?php echo $nomdir ?>');">
+            </form>
+        
+            <form method="POST" class="formulario">
                 <input type="text" class="validate campo" id="nombreEliminar" placeholder="Nombre">
                 <input type="button" class="btn waves-effect waves-light" value="Eliminar" onclick="eliminar('<?php echo $nomdir ?>');">
             </form>
+
+
         
         </div>
-
 
 
 

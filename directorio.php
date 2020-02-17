@@ -102,7 +102,24 @@
                 <input type="text" class="validate" id="nombreDirectorio" placeholder="Nombre">
                 <input type="button" class="btn waves-effect waves-light" value="Crear Directorio" onclick="crear_directorio('<?php echo $nomdir ?>');">
             </form>
+
+            <form method="POST" class="formulario">
+                <input type="text" class="validate" id="nombrePermisos" placeholder="Nombre">
+                <input type="button" class="btn waves-effect waves-light" value="Ver permisos" onclick="ver_permisos('<?php echo $nomdir ?>');">
+            </form>
         </div>
+
+        <div class="row segunda">
+            <form method="POST" class="formulario">
+                <input type="text" class="validate" id="nombreCopiar" placeholder="Nombre elemento a copiar">
+                <input type="text" class="validate" id="rutaPegar" placeholder="Ruta para pegar">
+                <input type="button" class="btn waves-effect waves-light" value="Pegar" onclick="copiar_pegar('<?php echo $nomdir ?>');">
+            </form>
+
+        </div>
+
+
+
 
         <div id="resultados"></div>       
 

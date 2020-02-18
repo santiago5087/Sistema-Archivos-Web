@@ -125,32 +125,56 @@ function cambiar_propietario(ruta) {
 
 function cambiar_permisos(ruta) {
     var nombreElemento = document.getElementById("elementoProp").value;
+    var c00 = document.getElementById("c00").checked;
+    var c01 = document.getElementById("c01").checked;
+    var c02 = document.getElementById("c02").checked;
+    var c10 = document.getElementById("c10").checked;
+    var c11 = document.getElementById("c11").checked;
+    var c12 = document.getElementById("c12").checked;
+    var c20 = document.getElementById("c20").checked;
+    var c21 = document.getElementById("c21").checked;
+    var c22 = document.getElementById("c22").checked;
 
-    var us = 0;
+    var valUs = 0;
+    var valGr = 0;
+    var valOth = 0;
 
-    if ( $("#c00").attr('checked') ) {
-        us += 1;
+    if (c00) {
+        valUs += 4;
+    }
+    if (c01) {
+        valUs += 2;
+    }
+    if (c02) {
+        valUs += 1;
+    }
+    if (c10) {
+        valGr += 4;
+    }
+    if (c11) {
+        valGr += 2;
+    }
+    if (c12) {
+        valGr += 1;
+    }
+    if (c20) {
+        valOth += 4;
+    }
+    if (c21) {
+        valOth += 2;
+    }
+    if (c22) {
+        valOth += 1;
     }
 
-    if ( $("#c01").attr('checked') ) {
-        us += 1;
-    }
-
-    if ( $("#c02").attr('checked') ) {
-        us += 1;
-    }
-
-    window.alert(us);
-    var celda00 = document.getElementById("c01");
-    var celda00 = document.getElementById("c02");
     var url = "comandos/cambiarPermisos";
-
+    window.alert(ruta);
     $.ajax({
         type:"post",
         url: url,
-        data: {nombreE: nombreElemento, nombreP: nombrePropietario, direccion: ruta},
+        data: {nombreE: nombreElemento, us: valUs, gr: valGr, oth: valOth , direccion: ruta},
         success:function(datos) {
-            window.alert("Se ha cambiado el propietario con éxito! recargar la página.")
+            window.alert("Se ha cambiado los permisos con éxito! recargar la página.");
         }
     })
 }

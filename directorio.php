@@ -142,27 +142,27 @@
                     <tbody>
                         <tr>
                             <td>  </td>
-                            <td> Usuario </td>
-                            <td> Grupo </td>
-                            <td> Otros </td>
+                            <td> Read </td>
+                            <td> Write </td>
+                            <td> Execute </td>
                         </tr>
                         <tr>
-                            <td>  Read </td>
+                            <td>  Usuario </td>
                             <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c00" /></label> </td>
                             <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c01" /></label> </td>
                             <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c02" /></label> </td>
                         </tr>
                         <tr>
-                            <td> Write </td>
+                            <td> Grupo </td>
                             <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c10" /></label> </td>
                             <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c11" /></label> </td>
                             <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c12" /></label> </td>
                         </tr>
                         <tr>
-                            <td> Execute </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" /></label> </td>    
+                            <td> Otros </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c20" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c21" /></label> </td>
+                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c22" /></label> </td>    
                         </tr>
 
                     </tbody>

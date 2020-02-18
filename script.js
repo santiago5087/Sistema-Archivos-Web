@@ -1,6 +1,6 @@
 function crear_archivo(ruta) {
     var nombre = document.getElementById("nombreArchivo").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/crearArchivo.php";
 
     $.ajax({
@@ -15,7 +15,7 @@ function crear_archivo(ruta) {
 
 function crear_directorio(ruta) {
     var nombre = document.getElementById("nombreDirectorio").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/crearDirectorio.php";
 
     $.ajax({
@@ -30,7 +30,7 @@ function crear_directorio(ruta) {
 
 function ver_permisos(ruta) {
     var nombre = document.getElementById("nombrePermisos").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/verPermisos.php";
 
     $.ajax({
@@ -47,7 +47,7 @@ function ver_permisos(ruta) {
 function copiar_pegar(ruta) {
     var nombre = document.getElementById("nombreCopiar").value;
     var rutaPegar = document.getElementById("rutaPegar").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/copiarPegar.php";
 
     $.ajax({
@@ -62,7 +62,7 @@ function copiar_pegar(ruta) {
 
 function eliminar(ruta) {
     var nombre = document.getElementById("nombreEliminar").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/eliminarElemento.php";
 
     $.ajax({
@@ -78,7 +78,7 @@ function eliminar(ruta) {
 function mover(ruta) {
     var nombre = document.getElementById("nombreCortar").value;
     var rutaPegar = document.getElementById("rutaMover").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/cortarMover.php";
 
     $.ajax({
@@ -94,7 +94,7 @@ function mover(ruta) {
 function cambiar_nombre(ruta) {
     var nombreViejo = document.getElementById("nombreViejo").value;
     var nombreNuevo = document.getElementById("nombreNuevo").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/cambiarNombre.php";
 
     $.ajax({
@@ -110,7 +110,7 @@ function cambiar_nombre(ruta) {
 function cambiar_propietario(ruta) {
     var nombreElemento = document.getElementById("nombreElU").value;
     var nombrePropietario = document.getElementById("nombreUser").value;
-    //var direccion = document.getElementById("direccion").value;
+    
     var url = "comandos/cambiarPropietario.php";
 
     $.ajax({
@@ -167,8 +167,8 @@ function cambiar_permisos(ruta) {
         valOth += 1;
     }
 
-    var url = "comandos/cambiarPermisos";
-    window.alert(ruta);
+    var url = "comandos/cambiarPermisos.php";
+    
     $.ajax({
         type:"post",
         url: url,

@@ -178,15 +178,13 @@
         
         </div>
 
-        
-
         <div id="resultados"></div>       
 
     <?php
 
     echo "</pre></hr />\n";
     chmod($nomdir . "perro.txt", 0777);
-    $prueba = chmod($nomdir . "prueba.txt", 0000);
+    $prueba = chmod($nomdir . "prueba2.txt", 0551);
     echo "<pre>$prueba</pre>";
     $salida = shell_exec("ls -l " . $nomdir . "/" );
     echo "<pre>$salida</pre>";

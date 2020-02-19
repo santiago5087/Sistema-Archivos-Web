@@ -67,16 +67,16 @@
                     echo '</a></span></label>';
                 }                                                                       
                 else {
-                    echo '<label><input type="radio" name="group1" class="with-gap" onclick="ver_tabla('. "'$nomdir'".','."'$fichero'" .')"  /> <span><a href="?nomdir=' . urlencode($nomdir . $fichero) .'">'; //Se envía el nombre del directorio codificado
+                    echo '<label><input type="radio" name="group1" class="with-gap" onclick="ver_tabla('. "'$nomdir'".','."'$fichero'" .')"  /><span> <img src="materialize/icons/carpeta.png"> <a href="?nomdir=' . urlencode($nomdir . $fichero) .'">'; //Se envía el nombre del directorio codificado
                     echo $fichero;
-                    echo "</a></span></label>";
+                    echo "</a></img></span></label>";
                 }
                 echo str_repeat(" ", 40 - strlen($fichero));    
                 echo "-";
             } 
             else {
-                echo '<label><input type="radio" name="group1" class="with-gap" onclick="ver_tabla('. "'$nomdir'".','."'$fichero'" .')" /> <span>' . str_pad($fichero, 40);
-                echo '</span></label>';
+                echo '<label><input type="radio" name="group1" class="with-gap" onclick="ver_tabla('. "'$nomdir'".','."'$fichero'" .')" /><span> <img src="materialize/icons/archivo.png"> ' . str_pad($fichero, 40);
+                echo '</img></span></label>';
                 echo str_pad(filesize($nomdir . $fichero), 10);
             }
             echo "<br />\n";

@@ -11,11 +11,22 @@
 
 
 ## Instrucciones
-**1.** Instalar el paquete de software libre llamado XAMPP (inclulye PHP), solo se utilizará la herramienta del servidor web de código abierto Apache (para plataformas UNIX y Microsoft Windows), al instalar el paquete completo se facilita el proceso de instalación y configuración.
+**1.** Instalar apache desde la MV de linux con los siguientes comandos: 
+- sudo apt install apache2
+- sudo apt install php libapache2-mod-php
 
-**2.**  Clonar el repositorio y pegar la carpeta del proyecto en la carpeta htdocs, la cual se encuentra en donde se instaló XAMPP (generalmenete en la ruta: C:\xampp\htdocs).
+**2.**  Clonar el repositorio en la carpeta /var/www/html y otorgarle permisos:
+- sudo git clone https://github.com/santiago5087/Sistema-Archivos-Web.git
+- sudo chmod 777 /var/www
 
-**3.** Abrir el panel de control de XAMPP y darle al botón 'Start' del servicio Apache, para que el servidor inicie en la maquina local.
+**3.** Iniciar apache:
+- sudo service apache2 start
 
-**4.** Por medio del servidor abrimos el proyecto (generlmente con ruta http://localhost/Sistema-Archivos-SO/) y seleccionas el archivo 'directorio.php', para poder usar el sistema de archivos web y listo!. 
+**4.** Desde el navegador de la MV ingresar a localhost/Sistema-Archivos-Web/directorio.php, con el cual el servidor ejecuta el proyecto. 
+Para acceder al proyecto desde otra maquina, configurar la red en modo host only o puente, y desde el navegador ingresar la ip de la MV:
+http://"ip"/Sistema-Archivos-Web/directorio.php
 
+**Uso**
+- Para devolverse un nivel en el gestor de archivos, presionar ..
+- Para devolserse a la carpeta raíz, presionar .
+- Para pegar o mover el fichero a un nivel superior, ingresar en la ruta: ../

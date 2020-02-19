@@ -1,8 +1,8 @@
 <?php
 
-    $nombreV = $_POST["nombreV"];
-    $nombreN = $_POST["nombreN"];
+    $nombre = $_POST["nombre"];
+    $nuevoNombre = $_POST["nuevoNombre"];
     $direccion = $_POST["direccion"];
-    shell_exec("mv " . "." . $direccion . $nombreV . " ." . $direccion . $nombreN);
+    echo shell_exec("mv " . "." . $direccion . $nombre . " ." . $direccion . $nuevoNombre);
 
 ?>

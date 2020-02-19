@@ -4,7 +4,7 @@
 
 .formulario {
     align-items: flex-start;
-    padding-right: 50px;
+
 }
 
 .campo {
@@ -16,4 +16,12 @@
     pointer-events: all !important;
     width: 20px;
     height: 20px;
+}
+
+table {
+    width: 40%;
+}
+
+.esconder {
+    display: none !important;
 }

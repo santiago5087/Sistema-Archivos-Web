@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" href="style.css">
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>-
+
     <title>Lectura de archivos</title>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
     <script
-  src="materialize/js/jquery-3.4.1.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+    src="materialize/js/jquery-2.2.4.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
   
     <script src="script.js"></script>
 </head>
@@ -45,7 +45,7 @@
             }
         }
 
-        echo "<h3>Contenido de $nomdir</h3>\n";
+        echo "<h3>Contenido de " . substr($nomdir, 8) . "</h3>\n";
         $dir = opendir($nomdir); //Abre el directorio indicado
         
         echo '<pre class="container">';
@@ -62,12 +62,12 @@
             
             if (is_dir($nomdir . $fichero)) {   //Se concatena el string
                 if ($fichero == "." or $fichero =="..") {
-                    echo '<label> <span><a href="?nomdir=' . urlencode($nomdir . $fichero) .'">';
+                    echo '<span><a href="?nomdir=' . urlencode($nomdir . $fichero) .'">';
                     echo $fichero;
                     echo '</a></span></label>';
-                }
+                }                                                                       
                 else {
-                    echo '<label><input type="checkbox" class="menu-dir filled-in" /> <span><a href="?nomdir=' . urlencode($nomdir . $fichero) .'">'; //Se envía el nombre del directorio codificado
+                    echo '<label><input type="radio" name="group1" class="with-gap" onclick="ver_tabla('. "'$nomdir'".','."'$fichero'" .')"  /> <span><a href="?nomdir=' . urlencode($nomdir . $fichero) .'">'; //Se envía el nombre del directorio codificado
                     echo $fichero;
                     echo "</a></span></label>";
                 }
@@ -75,7 +75,7 @@
                 echo "-";
             } 
             else {
-                echo '<label><input type="checkbox" class="menu-arch filled-in" /> <span>' . str_pad($fichero, 40);
+                echo '<label><input type="radio" name="group1" class="with-gap" onclick="ver_tabla('. "'$nomdir'".','."'$fichero'" .')" /> <span>' . str_pad($fichero, 40);
                 echo '</span></label>';
                 echo str_pad(filesize($nomdir . $fichero), 10);
             }
@@ -92,94 +92,21 @@
 
         ?>
 
-        <div class="row segunda">
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombreArchivo" placeholder="Nombre">
-                <input type="button" class="btn waves-effect waves-light" value="Crear Archivo" onclick="crear_archivo('<?php echo $nomdir ?>');">
-            </form>
-
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombreDirectorio" placeholder="Nombre">
-                <input type="button" class="btn waves-effect waves-light" value="Crear Directorio" onclick="crear_directorio('<?php echo $nomdir ?>');">
-            </form>
-
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombrePermisos" placeholder="Nombre">
-                <input type="button" class="btn waves-effect waves-light" value="Ver permisos" onclick="ver_permisos('<?php echo $nomdir ?>');">
-            </form>
-        </div>
-
-        <div class="row segunda">
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombreCopiar" placeholder="Nombre elemento a copiar">
-                <input type="text" class="validate campo" id="rutaPegar" placeholder="Ruta para pegar">
-                <input type="button" class="btn waves-effect waves-light" value="Pegar" onclick="copiar_pegar('<?php echo $nomdir ?>');">
-            </form>
-
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombreCortar" placeholder="Nombre elemento a cortar">
-                <input type="text" class="validate campo" id="rutaMover" placeholder="Ruta para pegar">
-                <input type="button" class="btn waves-effect waves-light" value="Pegar" onclick="mover('<?php echo $nomdir ?>');">
-            </form>
-            
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombreViejo" placeholder="Nombre del elemento">
-                <input type="text" class="validate campo" id="nombreNuevo" placeholder="Nombre nuevo">
-                <input type="button" class="btn waves-effect waves-light" value="Cambiar nombre" onclick="cambiar_nombre('<?php echo $nomdir ?>');">
-            </form>
-        </div>
-
-        <div class="row segunda">
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombreElU" placeholder="Nombre del elemento">
-                <input type="text" class="validate campo" id="nombreUser" placeholder="Nombre Propietario">
-                <input type="button" class="btn waves-effect waves-light" value="Cambiar Propietario" onclick="cambiar_propietario('<?php echo $nomdir ?>');">
-            </form>
-        
-            <form method="POST" class="formulario">
-
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>  </td>
-                            <td> Read </td>
-                            <td> Write </td>
-                            <td> Execute </td>
-                        </tr>
-                        <tr>
-                            <td>  Usuario </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c00" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c01" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c02" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td> Grupo </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c10" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c11" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c12" /></label> </td>
-                        </tr>
-                        <tr>
-                            <td> Otros </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c20" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c21" /></label> </td>
-                            <td> <label><input type="checkbox" class="with-gap checkFormulario" id="c22" /></label> </td>    
-                        </tr>
-
-                    </tbody>
-                </table>
-                
-                <input type="text" class="validate campo" id="elementoProp" placeholder="Nombre elemento"> <input type="button" class="btn waves-effect waves-light" value="Cambiar Permisos" onclick="cambiar_permisos('<?php echo $nomdir ?>');">
-            </form>
-
-            <form method="POST" class="formulario">
-                <input type="text" class="validate campo" id="nombreEliminar" placeholder="Nombre">
-                <input type="button" class="btn waves-effect waves-light" value="Eliminar" onclick="eliminar('<?php echo $nomdir ?>');">
-            </form>
-        
-        </div>
-
-        <div id="resultados"></div>       
-
-  <script src="eventos.js"></script>
+        <table>
+            <tr>
+                <td>
+                    <form method="POST" class="formulario">
+                        <input type="text" class="validate campo" id="nombreArchivo" placeholder="Nombre">
+                        <input type="button" class="btn waves-effect waves-light" value="Crear Archivo" onclick="crear_archivo('<?php echo $nomdir ?>');">
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" class="formulario">
+                        <input type="text" class="validate campo" id="nombreDirectorio" placeholder="Nombre">
+                        <input type="button" class="btn waves-effect waves-light" value="Crear Directorio" onclick="crear_directorio('<?php echo $nomdir ?>');">
+                    </form>
+                </td>
+            </tr>
+        </table>
 </body>
 </html>

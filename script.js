@@ -1,6 +1,6 @@
 function crear_archivo(ruta) {
     var nombre = document.getElementById("nombreArchivo").value;
-    
+    //var direccion = document.getElementById("direccion").value;
     var url = "comandos/crearArchivo.php";
 
     $.ajax({
@@ -8,14 +8,14 @@ function crear_archivo(ruta) {
         url: url,
         data: {nombre: nombre, direccion: ruta},
         success:function(datos) {
-            window.alert("Archivo creado con exito! recargar la página.");
+            location.reload();
         }
     })
 };
 
 function crear_directorio(ruta) {
     var nombre = document.getElementById("nombreDirectorio").value;
-    
+    //var direccion = document.getElementById("direccion").value;
     var url = "comandos/crearDirectorio.php";
 
     $.ajax({
@@ -23,14 +23,14 @@ function crear_directorio(ruta) {
         url: url,
         data: {nombre: nombre, direccion: ruta},
         success:function(datos) {
-            window.alert("Directorio creado con exito! recargar la página.");
+            location.reload();
         }
     })
 };
 
-function ver_permisos(ruta) {
-    var nombre = document.getElementById("nombrePermisos").value;
-    
+function ver_permisos(ruta,nombre) {
+    //var nombre = document.getElementById("nombrePermisos").value;
+    //var direccion = document.getElementById("direccion").value;
     var url = "comandos/verPermisos.php";
 
     $.ajax({
@@ -44,10 +44,10 @@ function ver_permisos(ruta) {
     })
 };
 
-function copiar_pegar(ruta) {
-    var nombre = document.getElementById("nombreCopiar").value;
+function copiar_pegar(ruta,nombre) {
+    //var nombre = document.getElementById("nombreCopiar").value;
     var rutaPegar = document.getElementById("rutaPegar").value;
-    
+    //var direccion = document.getElementById("direccion").value;
     var url = "comandos/copiarPegar.php";
 
     $.ajax({
@@ -55,14 +55,14 @@ function copiar_pegar(ruta) {
         url: url,
         data: {nombre: nombre, rutaPegar: rutaPegar, direccion: ruta},
         success:function(datos) {
-            window.alert("Elemento pegado! recargar la página.")
+            location.reload();
         }
     })
 };
 
-function eliminar(ruta) {
-    var nombre = document.getElementById("nombreEliminar").value;
-    
+function eliminar(ruta, nombre) {
+    //var nombre = document.getElementById("nombreEliminar").value;
+    //var direccion = document.getElementById("direccion").value;
     var url = "comandos/eliminarElemento.php";
 
     $.ajax({
@@ -70,61 +70,58 @@ function eliminar(ruta) {
         url: url,
         data: {nombre: nombre, direccion: ruta},
         success:function(datos) {
-            window.alert("Elemento eliminado con exito! recargar la página.");
+            location.reload();
         }
     })
 };
 
-function mover(ruta) {
-    var nombre = document.getElementById("nombreCortar").value;
-    var rutaPegar = document.getElementById("rutaMover").value;
-    
-    var url = "comandos/cortarMover.php";
+function ver_tabla(ruta,nombre) {
+    //var nombre = document.getElementById("nombrePermisos").value;
+    //var direccion = document.getElementById("direccion").value;
+    var url = "comandos/verTabla.php";
 
     $.ajax({
         type:"post",
         url: url,
-        data: {nombre: nombre, rutaPegar: rutaPegar, direccion: ruta},
+        data: {nombre: nombre, direccion: ruta},
         success:function(datos) {
-            window.alert("Elemento movido! recargar la página.")
+            $('#matriz').empty();
+            $('#matriz').html(datos);
         }
     })
 };
 
-function cambiar_nombre(ruta) {
-    var nombreViejo = document.getElementById("nombreViejo").value;
-    var nombreNuevo = document.getElementById("nombreNuevo").value;
-    
+function cambiar_nombre(ruta,nombre) {
+    var nuevoNombre= document.getElementById("nuevoNombre").value;
     var url = "comandos/cambiarNombre.php";
 
     $.ajax({
         type:"post",
         url: url,
-        data: {nombreV: nombreViejo, nombreN: nombreNuevo, direccion: ruta},
+        data: {nombre: nombre, nuevoNombre: nuevoNombre, direccion: ruta},
         success:function(datos) {
-            window.alert("Se ha cambiado el nombre con éxito! recargar la página.")
+            location.reload();
         }
     })
 };
 
-function cambiar_propietario(ruta) {
-    var nombreElemento = document.getElementById("nombreElU").value;
-    var nombrePropietario = document.getElementById("nombreUser").value;
-    
-    var url = "comandos/cambiarPropietario.php";
+function mover(ruta,nombre) {
+    //var nombre = document.getElementById("nombreCopiar").value;
+    var rutaMover = document.getElementById("rutaMover").value;
+    //var direccion = document.getElementById("direccion").value;
+    var url = "comandos/mover.php";
 
     $.ajax({
         type:"post",
         url: url,
-        data: {nombreE: nombreElemento, nombreP: nombrePropietario, direccion: ruta},
+        data: {nombre: nombre, rutaMover: rutaMover, direccion: ruta},
         success:function(datos) {
-            window.alert("Se ha cambiado el propietario con éxito! recargar la página.")
+            location.reload();
         }
     })
 };
 
-function cambiar_permisos(ruta) {
-    var nombreElemento = document.getElementById("elementoProp").value;
+function cambiar_permisos(ruta, nombreElemento) {
     var c00 = document.getElementById("c00").checked;
     var c01 = document.getElementById("c01").checked;
     var c02 = document.getElementById("c02").checked;
@@ -174,7 +171,22 @@ function cambiar_permisos(ruta) {
         url: url,
         data: {nombreE: nombreElemento, us: valUs, gr: valGr, oth: valOth , direccion: ruta},
         success:function(datos) {
-            window.alert("Se ha cambiado los permisos con éxito! recargar la página.");
+            location.reload();
         }
     })
-}
+};
+
+function cambiar_propietario(ruta, nombreElemento) {
+    var nombrePropietario = document.getElementById("nombreUser").value;
+    
+    var url = "comandos/cambiarPropietario.php";
+
+    $.ajax({
+        type:"post",
+        url: url,
+        data: {nombreE: nombreElemento, nombreP: nombrePropietario, direccion: ruta},
+        success:function(datos) {
+            location.reload();
+        }
+    })
+};
